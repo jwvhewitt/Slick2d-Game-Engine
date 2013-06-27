@@ -21,8 +21,8 @@ public class SolidTile extends BasicTile {
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
 		super.render(container, game, g);
-		g.setColor(Color.white);
-		g.draw(boundingBox);
+		/*g.setColor(Color.white);
+		g.draw(boundingBox);*/
 	}
 
 	@Override

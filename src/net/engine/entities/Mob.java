@@ -7,6 +7,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Mob extends Entity {
 
 	protected float speed;
+	protected float aggroRange;
 	
 	public Mob(float x, float y) {
 		super(x, y);

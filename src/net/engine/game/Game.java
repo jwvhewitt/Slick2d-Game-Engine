@@ -20,7 +20,7 @@ public class Game extends StateBasedGame {
 	public static void main(String[] args) {
 		try {
 			AppGameContainer container = new AppGameContainer(new Game("2d Game Engine"));
-			container.setDisplayMode(800, 640, false);
+			container.setDisplayMode(800, 600, false);
 			container.setTargetFrameRate(60);
 			container.start();
 		} catch (SlickException e) {
