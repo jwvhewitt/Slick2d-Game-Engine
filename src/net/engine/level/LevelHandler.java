@@ -2,6 +2,7 @@ package net.engine.level;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -9,8 +10,6 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import net.engine.entities.Player;
-import net.engine.tiles.TestCollideTile;
-import net.engine.tiles.TestTile;
 import net.engine.tiles.Tile;
 
 public class LevelHandler {
@@ -19,14 +18,16 @@ public class LevelHandler {
 	
 	public List<Tile> mapTiles = new ArrayList<Tile>();
 	
+	Component9x9Room room;
+	
 	public LevelHandler() {
 		
 	}
 	
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
-		mapTiles.add(new TestTile(250, 250));
-		mapTiles.add(new TestCollideTile(300, 300));
-		player = new Player(100, 100);
+		room = new Component9x9Room();
+		room.generate(64, 64);
+		player = new Player(500, 100);
 		player.init(container, game);
 	}
 
@@ -41,6 +42,7 @@ public class LevelHandler {
 		for(Tile tile : mapTiles) {
 			tile.update(container, game, delta);
 		}
+		//System.out.println(mapTiles.size());
 		player.update(container, game, delta);
 	}
 }

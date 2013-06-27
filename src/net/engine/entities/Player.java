@@ -1,6 +1,5 @@
 package net.engine.entities;
 
-import net.engine.game.GameObject;
 import net.engine.game.GameState;
 import net.engine.tiles.SolidTile;
 import net.engine.tiles.Tile;
@@ -46,15 +45,9 @@ public class Player extends Mob {
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) {
 		super.update(container, game, delta);
-		blockedRight = false;
-		blockedLeft = false;
-		blockedUp = false;
-		blockedDown = false;
 		handleBlockCollisions();
 		handleMovements(container);
 		this.setBoundingBox(x, y, 32, 32);
-		
-		System.out.println("Player: " + "xPos: " + x + ", yPos: " + y);
 	}
 	
 	public void handleMovements(GameContainer container) {
@@ -80,7 +73,7 @@ public class Player extends Mob {
 		}
 		if(!blockedRight) {
 			if(input.isKeyDown(input.KEY_D)) {
-				xb++;
+				
 			}
 		}
 		
@@ -90,6 +83,10 @@ public class Player extends Mob {
 	}
 	
 	public void handleBlockCollisions() {
+		blockedRight = false;
+		blockedLeft = false;
+		blockedUp = false;
+		blockedDown = false;
 		for(Tile tile : GameState.levelHandler.mapTiles) {
 			if(tile instanceof SolidTile) {
 				if(this.collides(tile)) {

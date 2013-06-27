@@ -1,6 +1,5 @@
 package net.engine.game;
 
-import java.awt.event.KeyEvent;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;

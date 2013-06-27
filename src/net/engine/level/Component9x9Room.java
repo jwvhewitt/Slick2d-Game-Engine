@@ -1,0 +1,84 @@
+package net.engine.level;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.engine.game.GameState;
+import net.engine.tiles.TestCollideTile;
+import net.engine.tiles.TestTile;
+import net.engine.tiles.Tile;
+
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.state.StateBasedGame;
+
+public class Component9x9Room extends DungeonComponent {
+
+	private List<Tile> tiles = new ArrayList<Tile>();
+	
+	public Component9x9Room() {
+		
+	}
+	
+	@Override
+	public void init(GameContainer container, StateBasedGame game) {
+		
+	}
+	
+	@Override
+	public void generate(float x, float y) {
+		//top wall
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x, y));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (1*32), y));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (2*32), y));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (3*32), y));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (4*32), y));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (5*32), y));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (6*32), y));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (7*32), y));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (8*32), y));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (9*32), y));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (10*32), y));
+		//bottom wall
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x, y + (10*32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (1*32), y + (10*32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (2*32), y + (10*32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (3*32), y + (10*32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (4*32), y + (10*32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (5*32), y + (10*32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (6*32), y + (10*32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (7*32), y + (10*32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (8*32), y + (10*32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (9*32), y + (10*32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (10*32), y + (10*32)));
+		//left wall
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x, y));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x, y + (1 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x, y + (2 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x, y + (3 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x, y + (4 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x, y + (5 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x, y + (6 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x, y + (7 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x, y + (8 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x, y + (9 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x, y + (10 * 32)));
+		//right wall
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (10*32), y));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (10*32), y + (1 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (10*32), y + (2 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (10*32), y + (3 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (10*32), y + (4 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (10*32), y + (5 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (10*32), y + (6 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (10*32), y + (7 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (10*32), y + (8 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (10*32), y + (9 * 32)));
+			GameState.levelHandler.mapTiles.add(new TestCollideTile(x + (10*32), y + (10 * 32)));
+		for(int i = 0; i < 9; i++) {
+			for(int j = 0; j < 9; j++) {
+				GameState.levelHandler.mapTiles.add(new TestTile(x + 32 + (i*32), y + 32 + (j*32)));
+			}
+		}
+	}
+
+}

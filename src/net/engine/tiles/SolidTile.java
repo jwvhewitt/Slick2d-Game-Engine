@@ -29,7 +29,6 @@ public class SolidTile extends BasicTile {
 	public void update(GameContainer container, StateBasedGame game, int delta) {
 		super.update(container, game, delta);
 		this.setBoundingBox(x, y, 32, 32);
-		System.out.println("TestCollideTile: " + "xPos: " + x + ", yPos: " + y);
 	}
 
 }

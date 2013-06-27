@@ -27,6 +27,11 @@ public class Mob extends Entity {
 		
 	}
 	
+	public void setPosition(float x, float y) {
+		this.x = x;
+		this.y = y;
+	}
+	
 	public void move(float xa, float ya) {
 		if(xa != 0 && ya != 0) {
 			move(xa, 0);
