@@ -2,6 +2,8 @@ package net.engine.entities;
 
 import net.engine.game.GameState;
 import net.engine.graphics.ISpriteSheet;
+import net.engine.items.EquipmentSlot;
+import net.engine.items.Inventory;
 import net.engine.tiles.SolidTile;
 import net.engine.tiles.Tile;
 
@@ -23,16 +25,39 @@ public class Player extends Mob {
 	private boolean isWalking;
 	
 	private int animationFrameTimer = 175;
-	
 	private Animation walkingLeft = new Animation();
 	private Animation walkingRight = new Animation();
 	private Animation walkingDown = new Animation();
 	private Animation walkingUp = new Animation();
-	
 	private Image standing = ISpriteSheet.playerSheet.getSubImage(0, 0);
-
+	
+	public EquipmentSlot headArmorSlot;
+	public EquipmentSlot bodyArmorSlot;
+	public EquipmentSlot legArmorSlot;
+	public EquipmentSlot mainHandSlot;
+	public EquipmentSlot offHandSlot;
+	public EquipmentSlot trinketSlot;
+	public EquipmentSlot ringSlot;
+	public EquipmentSlot runeSlot;
+	public EquipmentSlot amuletSlot;
+	
+	private int strength;
+	private int agility;
+	private int intelligence;
+	private int endurance;
+	
+	public Inventory inventory;
+	
+	private int boxWidth = 28;
+	private int boxHeight = 28;
+	
 	public Player(float x, float y) {
 		super(x, y);
+		strength = 0;
+		agility = 0;
+		intelligence = 0;
+		endurance = 0;
+		inventory = new Inventory(30);
 		speed = 2;
 		sprite = ISpriteSheet.playerSheet.getSubImage(0, 0);
 	}
@@ -40,15 +65,15 @@ public class Player extends Mob {
 	@Override
 	public void init(GameContainer container, StateBasedGame game) {
 		super.init(container, game);
-		this.setBoundingBox(x, y, 32, 32);
+		this.setBoundingBox(x, y, boxWidth, boxHeight);
 		setAnimations();
 	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) {
 		super.render(container, game, g);
-		/*g.setColor(Color.white);
-		g.draw(boundingBox);*/
+		g.setColor(Color.white);
+		g.draw(boundingBox);
 	}
 
 	@Override
@@ -56,7 +81,7 @@ public class Player extends Mob {
 		super.update(container, game, delta);
 		handleBlockCollisions();
 		handleMovements(container);
-		this.setBoundingBox(x, y, 32, 32);
+		this.setBoundingBox(x, y, boxWidth, boxHeight);
 	}
 	
 	public void handleMovements(GameContainer container) {
@@ -119,16 +144,16 @@ public class Player extends Mob {
 		for(Tile tile : GameState.levelHandler.mapTiles) {
 			if(tile instanceof SolidTile) {
 				if(this.collides(tile)) {
-					if(this.x + 32 == tile.xPos()) {
+					if(this.x + boxWidth == tile.xPos()) {
 						blockedRight = true;
 					}
-					if(this.y + 32 == tile.yPos()) {
+					if(this.y + boxHeight == tile.yPos()) {
 						blockedDown = true;
 					}
-					if(this.x - 32 == tile.xPos()) {
+					if(this.x == tile.xPos() + tile.getBoundingBox().getWidth()) {
 						blockedLeft = true;
 					}
-					if(this.y - 32 == tile.yPos()) {
+					if(this.y == tile.yPos() + tile.getBoundingBox().getHeight()) {
 						blockedUp = true;
 					}
 				}
@@ -137,16 +162,16 @@ public class Player extends Mob {
 		for(Tile tile : GameState.levelHandler.sceneryTiles) {
 			if(tile instanceof SolidTile) {
 				if(this.collides(tile)) {
-					if(this.x + 32 == tile.xPos()) {
+					if(this.x + boxWidth == tile.xPos()) {
 						blockedRight = true;
 					}
-					if(this.y + 32 == tile.yPos()) {
+					if(this.y + boxHeight == tile.yPos()) {
 						blockedDown = true;
 					}
-					if(this.x - 32 == tile.xPos()) {
+					if(this.x - boxWidth == tile.xPos()) {
 						blockedLeft = true;
 					}
-					if(this.y - 32 == tile.yPos()) {
+					if(this.y - boxHeight == tile.yPos()) {
 						blockedUp = true;
 					}
 				}
@@ -171,5 +196,37 @@ public class Player extends Mob {
 			walkingUp.addFrame(ISpriteSheet.playerSheet.getSubImage(0, 3), animationFrameTimer);
 			walkingUp.addFrame(ISpriteSheet.playerSheet.getSubImage(1, 3), animationFrameTimer);
 			walkingUp.addFrame(ISpriteSheet.playerSheet.getSubImage(2, 3), animationFrameTimer);
+	}
+
+	public int getStrength() {
+		return strength;
+	}
+
+	public int getAgility() {
+		return agility;
+	}
+
+	public int getIntelligence() {
+		return intelligence;
+	}
+
+	public int getEndurance() {
+		return endurance;
+	}
+
+	public void addStrength(int strength) {
+		this.strength += strength;
+	}
+
+	public void addAgility(int agility) {
+		this.agility += agility;
+	}
+
+	public void addIntelligence(int intelligence) {
+		this.intelligence += intelligence;
+	}
+
+	public void addEndurance(int endurance) {
+		this.endurance += endurance;
 	}
 }

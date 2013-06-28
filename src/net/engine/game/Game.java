@@ -27,5 +27,4 @@ public class Game extends StateBasedGame {
 			e.printStackTrace();
 		}
 	}
-
 }

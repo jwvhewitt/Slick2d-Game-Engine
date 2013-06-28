@@ -17,7 +17,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 public class LevelHandler {
 
-	Player player;
+	public Player player;
 	
 	public List<Tile> mapTiles = new ArrayList<Tile>();
 	public List<Tile> sceneryTiles = new ArrayList<Tile>();
@@ -33,10 +33,10 @@ public class LevelHandler {
 		room = new Component9x9Room();
 		room.generate(64, 64);
 		
-		sceneryTiles.add(new GraniteStump(564, 500));
-		sceneryTiles.add(new StatueElephant(564, 532));
-		sceneryTiles.add(new AltarNormal(564, 564));
-		player = new Player(500, 100);
+		sceneryTiles.add(new GraniteStump(128, 160));
+		sceneryTiles.add(new StatueElephant(160, 128));
+		sceneryTiles.add(new AltarNormal(128, 128));
+		player = new Player(100, 100);
 		player.init(container, game);
 	}
 

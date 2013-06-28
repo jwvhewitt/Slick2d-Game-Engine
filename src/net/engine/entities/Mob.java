@@ -9,6 +9,10 @@ public class Mob extends Entity {
 	protected float speed;
 	protected float aggroRange;
 	
+	protected int maxHealth;
+	protected int maxMana;
+	protected int baseDamage;
+	
 	public Mob(float x, float y) {
 		super(x, y);
 	}
